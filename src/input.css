@@ -32,10 +32,13 @@
         font-weight: 400;
         font-size: 20px;
         line-height: 40px;
-        @apply text-grey-100;  
+        @apply text-grey-100 dark:bg-blue-800 dark:text-white;  
+    }
+    h1,h2,h3,h4,h5,h6,p,a {
+        @apply dark:text-white;
     }
     h1 {
-        @apply text-7xl font-semibold text-green-500;
+        @apply text-7xl font-semibold text-green-500 ;
     }
     h2 {
         @apply text-6xl leading-tight text-green-500;
@@ -91,6 +94,18 @@
         background-repeat: no-repeat;
         background-position: center center;
     }
+    html.dark .icon.icon-angle {
+        background-image: url('../src/assets/images/menu-arrow-white.svg');
+    }
+    .btn-theme-switch {
+        right: 0.125rem;
+    }
+    html.dark .btn-theme-switch {
+        right: 1.4rem;
+    }
+    html.dark .social-links svg path {
+        @apply fill-white;
+    }
     .sub-menu {
         @apply hidden;
     }
@@ -129,6 +144,46 @@
         body .swiper-button-prev:after {
             height: 40px;
             width: 40px;
+        }
+    }
+    @media only screen and (max-width: 640px) {
+        body {
+            @apply text-sm;  
+        }
+        h1 {
+            @apply text-3xl;
+        }
+        h2 {
+            @apply text-2xl;
+        }
+        h3 {
+            @apply text-xl pb-2;
+        }
+        h3:before {
+            @apply max-w-full w-20;
+        }
+        h6 {
+            @apply text-base;
+        }
+        body .swiper-button-next:after,
+        body .swiper-button-prev:after {
+            height: 30px;
+            width: 30px;
+        }
+        body .swiper-button-next {
+            @apply right-0;
+        }
+        body .swiper-button-prev {
+            @apply left-0;
+        }
+        .btn {
+            @apply text-sm px-4 py-2;
+        }
+        .btn.btn-sm {
+            @apply text-sm p-2.5;
+        }
+        .btn.btn-xs {
+            @apply text-xs p-2;
         }
     }
 }

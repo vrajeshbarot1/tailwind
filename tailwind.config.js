@@ -1,4 +1,6 @@
 module.exports = {
+  mode: 'jit',
+  darkMode: 'class',
   content: ["./src/**/*.{html,js}"],
   plugins: [
     require("tailwindcss-nested-groups"),
@@ -32,14 +34,16 @@ module.exports = {
         },
         'blue': {
           400: '#0B8497',
+          800: '#141C13'
         },
         'grey': {
           100: '#777777',
-          200: 'rgba(0,0,0,.5)'
+          200: 'rgba(0,0,0,.5)',
+          300: 'rgba(255,255,255,.3)'
         },
         'overlay': {
           100: 'rgba(0,0,0,.7)'
-        }
+        },
       }
     },
   }
