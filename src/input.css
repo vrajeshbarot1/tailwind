@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'PlayfairDisplay';
+        font-weight: 400;
+        font-style: normal;
+        src: url('../src/assets/fonts/PlayfairDisplay-Regular.woff') format("woff"), url('..../src/assets/fonts/PlayfairDisplay-Regular.woff2') format("woff2");
+    }
+    @font-face {
+        font-family: 'PlayfairDisplay';
+        font-weight: 500;
+        font-style: normal;
+        src: url('../src/assets/fonts/PlayfairDisplay-Medium.woff') format("woff"), url('../src/assets/fonts/PlayfairDisplay-Medium.woff2') format("woff2");
+    }
+    @font-face {
+        font-family: 'PlayfairDisplay';
+        font-weight: 500;
+        font-style: italic;
+        src: url('../src/assets/fonts/PlayfairDisplay-MediumItalic.woff') format("woff"), url('../src/assets/fonts/PlayfairDisplay-MediumItalic.woff2') format("woff2");
+    }
+    @font-face {
+        font-family: 'PlayfairDisplay';
+        font-weight: 700;
+        font-style: normal;
+        src: url('../src/assets/fonts/PlayfairDisplay-SemiBold.woff') format("woff"), url('../src/assets/fonts/PlayfairDisplay-SemiBold.woff2') format("woff2");
+    }
+    body {
+        font-family: 'PlayfairDisplay', serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 40px;
+        @apply text-grey-100;  
+    }
+    h1 {
+        @apply text-7xl font-semibold text-green-500;
+    }
+    h2 {
+        @apply text-6xl leading-tight text-green-500;
+    }
+    h3 {
+        @apply relative lg:text-5xl pb-3 before:content-[''] before:h-1 before:absolute before:w-24 before:bottom-0 before:left-0 before:bg-blue-400 text-green-500;
+    }
+    h4 {
+        @apply text-2xl leading-normal text-green-500;
+    }
+    h6 {
+        @apply text-green-500;
+    }
+    .btn {
+        @apply text-2xl border py-2.5 px-8 border-solid border-green-200 italic font-medium inline-block text-green-500;
+    }
+    .btn.btn-primary {
+        @apply hover:bg-green-200 hover:text-white transition-all duration-500;
+    }
+    .btn.btn-sm {
+        @apply not-italic tracking-widest text-xl leading-7 py-2.5 px-5;
+    }
+    .btn.btn-xs {
+        @apply not-italic tracking-widest text-sm leading-4 py-1.5 px-7;
+    }
+    p {
+        @apply text-xl leading-loose;
+    }
+    body .swiper-button-next,
+    body .swiper-button-prev {
+        height: 50px;
+        width: 50px;
+    }
+    body .swiper-button-next:after,
+    body .swiper-button-prev:after {
+        height: 50px;
+        width: 50px;
+        background-image: url('../src/assets/images/arrow.svg');
+        background-size: cover;
+        content: '';
+    }
+    body .swiper-button-next:after {
+        background-image: url('../src/assets/images/arrow-right.svg');
+    }
+    body .swiper-button-next {
+        @apply right-0;
+    }
+    body .swiper-button-prev {
+        @apply left-0;
+    }
+    .icon.icon-angle {
+        background-image: url('../src/assets/images/menu-arrow.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .sub-menu {
+        @apply hidden;
+    }
+    .snap-x {
+        scrollbar-width: none;
+    }
+    .snap-x::-webkit-scrollbar { display: none; }
+    @media only screen and (max-width: 1024px) {
+        .icon.icon-angle {
+            background-image: url('../src/assets/images/menu-arrow-white.svg');
+            background-repeat: no-repeat;
+            background-position: center center;
+        }       
+        h1 {
+            @apply text-5xl;
+        }
+        h2 {
+            @apply text-4xl;
+        }
+        h3 {
+            @apply text-3xl pb-8;
+        }
+        p {
+            @apply text-base leading-loose;
+        }
+        .btn {
+            @apply text-base py-2 px-5;
+        }
+        body .swiper-button-next {
+            @apply right-4;
+        }
+        body .swiper-button-prev {
+            @apply left-4;
+        }
+        body .swiper-button-next:after,
+        body .swiper-button-prev:after {
+            height: 40px;
+            width: 40px;
+        }
+    }
+}

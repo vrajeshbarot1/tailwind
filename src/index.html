@@ -1,0 +1,691 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Upskill</title>
+    <link rel="stylesheet" href="../dist/styles.css">
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+/>
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="../dist/bundle.js"></script>
+</head>
+<body>
+    <!-- Start:: menu -->
+    <nav class="border-b border-solid border-green-200 print:hidden">
+        <div class="container mx-auto px-8 xl:px-12 py-4 lg:py-8 flex items-center justify-between" x-data="{openMenu: false}">
+            <div class="flex items-center justify-center w-full relative lg:w-auto">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 lg:hidden" @click="openMenu = true">
+                    <img src="assets/images/hamburger-menu.svg" alt="hamburger menu" height="25" width="25">
+                </div>
+                <a href="/">
+                    <img src="assets/images/logo.png" alt="logo" height="250" height="72" class="h-auto w-56 lg:w-auto">
+                </a>
+            </div>
+            <div class="fixed lg:relative h-screen w-full top-0 left-0 z-10 lg:flex bg-green-500 text-white lg:text-black lg:bg-white lg:h-auto lg:w-auto overflow-y-auto overflow-x-hidden lg:overflow-visible" :class="{'hidden lg:block':(openMenu===false)}">
+                <div class="container lg:flex mx-auto lg:w-auto p-4">
+                    <div class="relative flex items-center justify-center lg:hidden">
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 lg:hidden"  @click="openMenu = false">
+                            <img src="assets/images/close-icon.svg" alt="hamburger menu" height="25" width="25" >
+                        </div>
+                        <a href="/">
+                            <img src="assets/images/logo-white.png" alt="logo" width="222" height="64" class="h-auto w-56 lg:w-auto">
+                        </a>
+                    </div>
+                    <ul class="lg:ml-auto lg:flex items-center lg:text-sm text-xl uppercase" >
+                        <li class="px-2 xl:px-4 2xl:px-8 py-4">
+                            <a href="#" class="hover:text-blue-400">HOME</a>
+                        </li>
+                        <li class="px-2 xl:px-4 2xl:px-8">
+                            <div class="group" x-data="{dropdown:false}">
+                                <div class="flex items-center py-4 cursor-pointer" @click="dropdown = !dropdown">
+                                    <a href="#" class="hover:text-blue-400">BLOG</a>
+                                    <i class="icon icon-angle inline-block h-2 w-2 ml-2"></i>
+                                </div>
+                                <ul class="lg:absolute lg:bg-white lg:p-6 lg:w-64 border-green-200 lg:border z-10 lg:hidden lg:group-hover:block sub-menu pl-8 lg:pl-0" :class="{'block':(dropdown === true)}">
+                                    <li><a href="#" class="lg:border-b border-green-200 block py-4 lg:text-black hover:text-blue-400">1st Full Post + 2 cols Grid</a></li>
+                                    <li><a href="#" class="lg:border-b border-green-200 block py-4 lg:text-black hover:text-blue-400">1st Full Post + list</a></li>
+                                    <li><a href="#" class="lg:border-b border-green-200 block py-4 lg:text-black hover:text-blue-400">2 cols Grid Layout</a></li>
+                                    <li><a href="#" class="lg:border-b border-green-200 block py-4 lg:text-black hover:text-blue-400">List Layout</a></li>
+                                    <li><a href="#" class="lg:border-b border-green-200 block py-4 lg:text-black hover:text-blue-400">3 cols Grid Layout</a></li>
+                                    <li><a href="#" class="block lg:text-black hover:text-blue-400 py-4">Standard Blog Layout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="px-2 xl:px-4 2xl:px-8">
+                            <div class="group">
+                                <div class="flex items-center py-4 cursor-pointer">
+                                    <a href="#" class="hover:text-blue-400">FEATURES</a>
+                                    <i class="icon icon-angle inline-block h-2 w-2 ml-2"></i>
+                                </div>
+                                <ul class="absolute bg-white w-64 border-green-200 border z-10 hidden group-hover:block">
+                                    <li class="relative group-scope px-6">
+                                        <a href="#" class="flex items-center justify-between border-b border-green-200 pt-6 pb-4 text-black hover:text-blue-400">
+                                            <span>Headers</span>
+                                            <i class="icon icon-angle inline-block h-2 w-2 ml-2 -rotate-90"></i>
+                                        </a>
+                                        <ul class="hidden group-scope-hover:block absolute top-0 left-full bg-white w-64 border-green-200 border z-10">
+                                            <li class="text-black hover:text-blue-400 px-6">
+                                                <a href="#" class="border-b border-green-200 block pt-6 pb-4">123</a>
+                                            </li>
+                                            <li class="text-black hover:text-blue-400 px-6">
+                                                <a href="#" class="border-b border-green-200 block py-4">123</a>
+                                            </li>
+                                            <li class="text-black hover:text-blue-400 px-6">
+                                                <a href="#" class="block pt-4 pb-6">123</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="relative group-scope px-6">
+                                        <a href="#" class="flex items-center justify-between border-b border-green-200 py-4 text-black hover:text-blue-400">
+                                            <span>Sliders</span>
+                                            <i class="icon icon-angle inline-block h-2 w-2 ml-2 -rotate-90"></i>
+                                        </a>
+                                        <ul class="hidden group-scope-hover:block absolute top-0 left-full bg-white w-64 border-green-200 border z-10">
+                                            <li class="text-black hover:text-blue-400 px-6">
+                                                <a href="#" class="border-b border-green-200 block pt-6 pb-4">Sliders 1</a>
+                                            </li>
+                                            <li class="text-black hover:text-blue-400 px-6">
+                                                <a href="#" class="block pt-4 pb-6">Sliders 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="relative group-scope px-6">
+                                        <a href="#" class="flex items-center justify-between pt-4 pb-6 text-black hover:text-blue-400">
+                                            <span>Sidebars</span>
+                                            <i class="icon icon-angle inline-block h-2 w-2 ml-2 -rotate-90"></i>
+                                        </a>
+                                        <ul class="hidden group-scope-hover:block absolute top-0 left-full bg-white w-64 border-green-200 border z-10">
+                                            <li class="text-black hover:text-blue-400 px-6">
+                                                <a href="#" class="border-b border-green-200 block pt-6 pb-4">Sidebars 1</a>
+                                            </li>
+                                            <li class="text-black hover:text-blue-400 px-6">
+                                                <a href="#" class="border-b border-green-200 block py-4">Sidebars 2</a>
+                                            </li>
+                                            <li class="text-black hover:text-blue-400 px-6">
+                                                <a href="#" class="block pt-4 pb-6">Sidebars 3</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="px-2 xl:px-4 2xl:px-8">
+                            <div class="group">
+                                <div class="flex items-center py-4 cursor-pointer">
+                                    <a href="#" class="hover:text-blue-400">CATEGORIES</a>
+                                    <i class="icon icon-angle inline-block h-2 w-2 ml-2"></i>
+                                </div>
+                                <ul class="absolute bg-white p-6 w-64 border-green-200 border z-10 hidden group-hover:block">
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">1st Full Post + 2 cols Grid</a></li>
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">1st Full Post + list</a></li>
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">2 cols Grid Layout</a></li>
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">List Layout</a></li>
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">3 cols Grid Layout</a></li>
+                                    <li><a href="#" class="text-black hover:text-blue-400">Standard Blog Layout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="px-2 xl:px-4 2xl:px-8 py-4">
+                            <a href="#" class="hover:text-blue-400">ABOUT</a>
+                            <i class="icon icon-angle"></i>
+                        </li>
+                        <li class="px-2 xl:px-4 2xl:px-8 py-4">
+                            <a href="#">CONTACT</a>
+                        </li>
+                        <li class="px-2 xl:px-4 2xl:px-8">
+                            <div class="group">
+                                <div class="flex items-center py-4 cursor-pointer">
+                                    <a href="#" class="hover:text-blue-400">Shop</a>
+                                    <i class="icon icon-angle inline-block h-2 w-2 ml-2"></i>
+                                </div>
+                                <ul class="absolute bg-white p-6 w-64 border-green-200 border z-10 hidden group-hover:block">
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">1st Full Post + 2 cols Grid</a></li>
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">1st Full Post + list</a></li>
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">2 cols Grid Layout</a></li>
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">List Layout</a></li>
+                                    <li><a href="#" class="border-b border-green-200 block pb-4 mb-4 text-black hover:text-blue-400">3 cols Grid Layout</a></li>
+                                    <li><a href="#" class="text-black hover:text-blue-400">Standard Blog Layout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="px-2 xl:px-4 2xl:px-8">
+                            <a href="#" class="hover:text-blue-400">PORTFOLIO</a>
+                        </li>
+                    </ul>
+                    <div class="py-4">
+                        <div class="relative">
+                            <input type="checkbox" class="absolute h-0 w-0" />
+                            <div class="relative block bg-black w-10 h-5 rounded-full">
+                                <div class="absolute left-0.5 top-0.5 ">
+                                    <img src="./assets/images/sun.svg" height="" alt="" srcset="">
+                                </div>
+                                <div class="absolute right-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition"></div>
+                                <div class="absolute right-0.5 top-0.5 ">
+                                    <img src="./assets/images/moon.svg" height="" alt="" srcset="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>             
+            </div>
+        </div>
+    </nav>
+    <!-- End:: menu -->
+    <section class="bg-green-100">
+        <div class="container mx-auto px-8 xl:px-12 py-8 xl:py-16">
+            <div class="flex -mx-4 print:hidden">
+                <div class="w-1/3 pt-10 lg:pt-16 px-4">
+                    <img src="./assets/images/haus-img-1.jpg" alt="">
+                </div>
+                <div class="w-1/3 text-center px-4">
+                    <span class="relative inline-block">
+                        <img src="./assets/images/image-tape.svg" alt="" class="absolute -top-3 -left-3 xl:-top-8 xl:-left-8 h-8 w-8 xl:w-20 xl:h-20">
+                        <img src="./assets/images/haus-img-2.jpg" alt="" class="mx-auto">
+                        <img src="./assets/images/image-tape.svg" alt="" class="absolute -bottom-3 -right-3 xl:-bottom-8 xl:-right-8 h-8 w-8 xl:w-20 xl:h-20">
+                    </span>
+                </div>
+                <div class="w-1/3 pt-10 lg:pt-16 px-4">
+                    <img src="./assets/images/haus-img-3.jpg" alt="" class="ml-auto">
+                </div>
+            </div>
+            <div class="text-center">
+                <h6 class="italic font-medium">HEY THERE</h6>
+                <h1>I’m Haus</h1>
+                <p class="py-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam libero ex, tristique sed dignissim vel, cursus ut magna. Aenean lacinia mi eget orci aliquet pharetra. Duis ut ultricies felis. Nulla vitae mi dictum, scelerisque nibh eget, sagittis ligula.Nulla tortor quam, feugiat id laoreet ac, pellentesque sed tellus. Nunc condimentum, magna vel sodales mollis, nisl nibh ornare eros, vel malesuada nunc metus at elit. Aenean vitae arcu auctor, imperdiet nisl quis, interdum lacus.</p>
+                <a href="#" class="btn btn-primary">READ THE WHOLE STORY</a>
+            </div>
+        </div>
+    </section>
+    <section class="bg-yellow-100">
+        <div class="container flex mx-auto px-4 xl:px-16">
+            <div class="w-4/12 py-8 lg:py-24 lg:pr-16">
+                <span class="relative inline-block">
+                    <img src="./assets/images/image-tape.svg" alt="" class="absolute -top-3 -left-3 xl:-top-8 xl:-left-8 h-8 w-8 xl:w-20 xl:h-20">
+                    <img src="./assets/images/get_started.jpg" alt="" width="338" height="405" class="w-96">
+                    <img src="./assets/images/image-tape.svg" alt="" class="absolute -bottom-3 -right-3 xl:-bottom-8 xl:-right-8 h-8 w-8 xl:w-20 xl:h-20">
+                </span>
+            </div>
+            <div class="w-8/12 pl-12 lg:pl-16 py-8 lg:py-24 lg:border-l border-solid border-green-200">
+                <h3 class="tracking-widest leading-normal">Condimentum Magna Vel Sodales Mollis Nisl Nibh Ornare Eros</h3>
+                <p class="text-grey-100 py-8 text-lg lg:text-2xl leading-loose">Nunc condimentum, magna vel sodales mollis, nisl nibh ornare eros, vel malesuada nunc metus. Aenean vitae arcu auctor, imperdiet nisl quis interdum lacus.</p>
+                <a href="" class="btn btn-primary">GET STARTED</a>
+            </div>
+        </div>
+    </section>
+    <section class="print:hidden">
+        <div class="relative container mx-auto flex items-center px-4 py-8 xl:p-16">
+            <div class="flex flex-wrap">
+                <div class="mb-32 relative inline-block w-1/3 group cursor-pointer">
+                    <img src="./assets/images/explore-1.jpg" alt="" class="w-full">
+                    <div class="absolute flex top-0 left-0 justify-center items-center h-full w-full group-hover:bg-overlay-100">
+                        <p class="bg-white px-2 py-3 lg:py-5 leading-none font-medium tracking-wider text-center transition duration-700 ease-in-out group-hover:w-full">ARCHITECTURE</p>
+                    </div>
+                </div>
+                <div class="mb-32 relative inline-block w-1/3">
+                </div>
+                <div class="mb-32 relative inline-block w-1/3 group cursor-pointer">
+                    <img src="./assets/images/explore-1.jpg" alt="" class="w-full">
+                    <div class="absolute flex top-0 left-0 justify-center items-center h-full w-full group-hover:bg-overlay-100">
+                        <p class="bg-white px-2 py-5 leading-none font-medium tracking-wider text-center transition duration-700 ease-in-out group-hover:w-full">INTERIOR</p>
+                    </div>
+                </div>
+                <div class="relative inline-block w-1/3 group cursor-pointer">
+                    <img src="./assets/images/explore-3.jpg" alt="" class="w-full">
+                    <div class="absolute flex top-0 left-0 justify-center items-center h-full w-full group-hover:bg-overlay-100">
+                        <p class="bg-white px-2 py-5 leading-none font-medium tracking-wider text-center transition duration-700 ease-in-out group-hover:w-full">INTERIOR</p>
+                    </div>
+                </div>
+                <div class="relative w-1/3"></div>
+                <div class="relative inline-block w-1/3 group cursor-pointer">
+                    <img src="./assets/images/explore-4.jpg" alt="" class="w-full">
+                    <div class="absolute flex top-0 left-0 justify-center items-center h-full w-full group-hover:bg-overlay-100">
+                        <p class="bg-white px-2 py-5 leading-none font-medium tracking-wider text-center transition duration-700 ease-in-out group-hover:w-full">INTERIOR</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 text-center px-8 lg:px-16">
+                <h6 class="mb-2.5 italic font-medium">THE PORTFOLIO</h6>
+                <h2 class="mb-10">VIEW RECENT WORK</h2>
+                <a href="#" class="btn btn-primary">EXPLORE</a>
+            </div>
+        </div>
+    </section>
+    <section class="bg-green-100">
+        <div class="container flex mx-auto px-4 xl:px-16">
+            <div class="w-2/6 lg:w-2/5 py-8 lg:py-24 lg:border-r border-solid border-green-200 lg:pr-16">
+                <h3>Tools For Creatives</h3>
+                <p class="text-grey-100 py-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                <a href="" class="btn btn-primary">GO TO THE BLOG</a>
+            </div>
+            <div class="w-4/6 lg:w-3/5 py-8 lg:py-24 flex pl-8 lg:pl-24 justify-end">
+                <div class="pr-4 lg:pr-8">
+                    <img src="./assets/images/creative-tool1.jpg" alt="" width="338" height="505">
+                </div>  
+                <div>
+                    <img src="./assets/images/creative-tool2.jpg" alt="" width="338" height="505">
+                </div>  
+            </div>
+        </div>
+    </section>
+    <section class="print:hidden">
+        <div class="container mx-auto">
+            <div class="-mx-4 text-center flex lg:flex-wrap px-4 py-16 xl:p-16 snap-x snap-mandatory overflow-x-auto overflow-y-hidden lg:snap-none">
+                <div class="flex-shrink-0 w-1/2 lg:w-1/3 px-4 relative scroll-ml-6 snap-start">
+                    <p class="pt-8 px-8 pb-24 border border-green-200">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor interdum ipsum, non finibus libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
+                    <img src="./assets/images/client-1.png" alt="" class="mx-auto absolute bottom-0 left-2/4 -translate-x-1/2 -translate-y-1/2 p-2 lg:p-2.5 border rounded-full border-green-200 bg-white w-24 lg:w-32" />
+                    <p class="pt-20 text-lg">CLIENT NAME HERE</p>
+                </div>
+                <div class="flex-shrink-0 w-1/2 lg:w-1/3 px-4 relative scroll-ml-6 snap-start">
+                    <p class="pt-8 px-8 pb-24 border border-green-200">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor interdum ipsum, non finibus libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
+                    <img src="./assets/images/client-2.png" alt="" class="mx-auto absolute bottom-0 left-2/4 -translate-x-1/2 -translate-y-1/2 p-2.5 border rounded-full border-green-200 bg-white" />
+                    <p class="pt-20 text-lg">CLIENT NAME HERE</p>
+                </div>
+                <div class="flex-shrink-0 w-1/2 lg:w-1/3 px-4 relative scroll-ml-6 snap-start">
+                    <p class="pt-8 px-8 pb-24 border border-green-200">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor interdum ipsum, non finibus libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
+                    <img src="./assets/images/client-3.png" alt="" class="mx-auto absolute bottom-0 left-2/4 -translate-x-1/2 -translate-y-1/2 p-2.5 border rounded-full border-green-200 bg-white" />
+                    <p class="pt-20 text-lg">CLIENT NAME HERE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start:: with swiper -->
+    <section class="bg-green-100 print:hidden">
+        <div class="container mx-auto px-4 py-16 lg:p-16 relative swiper-section">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper max-h-max">
+                    <div class="swiper-slide">
+                        <img src="./assets/images/slider1.jpg" alt="" class="w-full">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/images/slider1.jpg" alt="" class="w-full">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/images/slider1.jpg" alt="" class="w-full">
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+    <!-- End:: with swiper -->
+    
+   <!-- Start:: Accordian Section with alpine -->
+   <section class=" print:hidden">
+       <div class="container mx-auto px-4 py-16 lg:p-16" x-data="{openTab: 1}">
+            <ul class="flex">
+                <li @click="openTab = 1" class="cursor-pointer">
+                    <h3 class="pb-4">Lifestyle</h3><span class="h-1 w-full bg-blue-400"></span>
+                </li>
+                <li @click="openTab = 2" class="cursor-pointer text-5xl ml-14 lg:ml-32">
+                    <h3 class="pb-4">Travel</h3><span class="h-1 w-full bg-blue-400"></span>
+                </li>
+                <li @click="openTab = 3" class="cursor-pointer text-5xl ml-14 lg:ml-32">
+                    <h3 class="pb-4">Photos</h3><span class="h-1 w-full bg-blue-400"></span>
+                </li>
+            </ul>
+            <div class="border border-blue-400 p-8 mt-8">
+                <div x-show="openTab === 1">
+                    <p class="first-letter:uppercase first-letter:text-5xl first-letter:leading-tight first-letter:lg:text-7xl first-letter:font-bold
+                    ">
+                        tab1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, Pulvinar dapibus leo.
+                    </p>
+                </div>
+                <div x-show="openTab === 2">
+                    tab2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, Pulvinar dapibus leo.
+                </div>
+                <div x-show="openTab === 3">
+                    tab3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, Pulvinar dapibus leo.
+                </div>
+            </div>
+       </div>
+   </section>
+   <!-- End:: Accordian Section with alpine -->
+   <!-- Start:: Accordian Section without alpine -->
+   <section>
+
+   </section>
+   <!-- End:: Accordian Section without alpine -->
+   <section class="bg-green-100 print:text-black">
+       <div class="container mx-auto py-8 lg:py-16 px-4 lg:px-10 ">
+           <h2 class="mb-8 lg:mb-16 text-left lg:text-center">Lets Collaborate Together</h2>
+        <div class="columns-2 break-after-column lg:columns-4">
+            <p>What is Lorem Ipsum?
+             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+             It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+             Why do we use it?
+             It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+             Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. </p>
+        </div>
+       </div>
+   </section>
+   <section class="print:hidden">
+        <div class="container mx-auto py-16 px-4 lg:px-10 ">
+            <h2 class="text-center">Recent Posts</h2>
+            <div class="flex flex-wrap pt-0 lg:pt-8 text-green-500 -mx-4">
+                <div class="w-1/2 lg:w-1/3">
+                    <div class="px-4 py-8">
+                        <div class="border border-green-200">
+                            <div>
+                                <img src="./assets/images/haus-img-1.jpg" alt="" class="w-full">
+                            </div>
+                            <div class="p-2 pb-4 lg:p-8 text-center">
+                                <p class="text-xs pb-2.5">PHOTO</p>
+                                <h4 class="text-2xl pb-2.5">Little Known Ways To Rid YourSelf</h4>
+                                <p class="text-sm pb-4">June 20,2021</p>
+                                <p class="border-t border-green-200 pt-4 text-base line-clamp-3">Special cloth alert. Fan luv. Celebrate success right, the only way, apple. Give thanks to the most high. In life there will be road blocks but we will over come...</p>
+                                <div class="text-center pt-4">
+                                    <a href="#" class="btn btn-xs btn-primary" title="Read More">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 lg:w-1/3">
+                    <div class="px-4 py-8">
+                        <div class="border border-green-200">
+                            <div class="p-8 text-center">
+                                <p class="text-xs pb-2.5">PHOTO</p>
+                                <h4 class="text-2xl pb-2.5">Little Known Ways To Rid YourSelf</h4>
+                                <p class="text-sm pb-4">June 20,2021</p>
+                                <p class="border-t border-green-200 pt-4 text-base line-clamp-3">Special cloth alert. Fan luv. Celebrate success right, the only way, apple. Give thanks to the most high. In life there will be road blocks but we will over come...</p>
+                                <div class="text-center pt-4">
+                                    <a href="#" class="btn btn-xs btn-primary" title="Read More">Read More</a>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="./assets/images/haus-img-1.jpg" alt="" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 lg:w-1/3">
+                    <div class="px-4 py-8">
+                        <div class="border border-green-200">
+                            <div>
+                                <img src="./assets/images/haus-img-1.jpg" alt="" class="w-full">
+                            </div>
+                            <div class="p-2 pb-4 lg:p-8 text-center">
+                                <p class="text-xs pb-2.5">PHOTO</p>
+                                <h4 class="text-2xl pb-2.5">Little Known Ways To Rid YourSelf</h4>
+                                <p class="text-sm pb-4">June 20,2021</p>
+                                <p class="border-t border-green-200 pt-4 text-base line-clamp-3">Special cloth alert. Fan luv. Celebrate success right, the only way, apple. Give thanks to the most high. In life there will be road blocks but we will over come...</p>
+                                <div class="text-center pt-4">
+                                    <a href="#" class="btn btn-xs btn-primary" title="Read More">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 lg:w-1/3">
+                    <div class="px-4 py-8">
+                        <div class="border border-green-200">
+                            <div class="p-8 text-center">
+                                <p class="text-xs pb-2.5">PHOTO</p>
+                                <h4 class="text-2xl pb-2.5">Little Known Ways To Rid YourSelf</h4>
+                                <p class="text-sm pb-4">June 20,2021</p>
+                                <p class="border-t border-green-200 pt-4 text-base line-clamp-3">Special cloth alert. Fan luv. Celebrate success right, the only way, apple. Give thanks to the most high. In life there will be road blocks but we will over come...</p>
+                                <div class="text-center pt-4">
+                                    <a href="#" class="btn btn-xs btn-primary" title="Read More">Read More</a>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="./assets/images/haus-img-1.jpg" alt="" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 lg:w-1/3">
+                    <div class="px-4 py-8">
+                        <div class="border border-green-200">
+                            <div>
+                                <img src="./assets/images/haus-img-1.jpg" alt="" class="w-full">
+                            </div>
+                            <div class="p-2 pb-4 lg:p-8 text-center">
+                                <p class="text-xs pb-2.5">PHOTO</p>
+                                <h4 class="text-2xl pb-2.5">Little Known Ways To Rid YourSelf</h4>
+                                <p class="text-sm pb-4">June 20,2021</p>
+                                <p class="border-t border-green-200 pt-4 text-base line-clamp-3">Special cloth alert. Fan luv. Celebrate success right, the only way, apple. Give thanks to the most high. In life there will be road blocks but we will over come...</p>
+                                <div class="text-center pt-4">
+                                    <a href="#" class="btn btn-xs btn-primary" title="Read More">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 lg:w-1/3">
+                    <div class="px-4 py-8">
+                        <div class="border border-green-200">
+                            <div class="p-8 text-center">
+                                <p class="text-xs pb-2.5">PHOTO</p>
+                                <h4 class="text-2xl pb-2.5">Little Known Ways To Rid YourSelf</h4>
+                                <p class="text-sm pb-4">June 20,2021</p>
+                                <p class="border-t border-green-200 pt-4 text-base line-clamp-3">Special cloth alert. Fan luv. Celebrate success right, the only way, apple. Give thanks to the most high. In life there will be road blocks but we will over come...</p>
+                                <div class="text-center pt-4">
+                                    <a href="#" class="btn btn-xs btn-primary" title="Read More">Read More</a>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="./assets/images/haus-img-1.jpg" alt="" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="text-center">
+                <a href="#" class="btn btn-primary" title="VIEW MORE POSTS">VIEW MORE POSTS</a>
+            </div>
+        </div>
+   </section>
+   <section class="bg-green-100 print:hidden">
+        <div class="mx-auto container py-8 px-4 lg:py-16 lg:px-8">
+            <h2 class="text-center">Contact Us</h2>
+            <form class="flex pt-8 flex-wrap text-green-500" method="post" action="/">
+                <div class="w-1/2 pr-4">
+                    <div class="pb-5">
+                        <input type="text" name="First Name" placeholder="First Name" class="border border-solid border-green-600 w-full px-5 py-2.5 bg-transparent  placeholder:text-green-500" />
+                    </div>
+                    <div class="pb-5">
+                        <input type="text" name="Last Name" placeholder="Last Name" class="border border-solid border-green-600 w-full px-5 py-2.5 bg-transparent placeholder:text-green-500" />
+                    </div>  
+                    <div class="pb-5">
+                        <input type="text" name="Email" placeholder="Email" class="border border-solid border-green-600 w-full px-5 py-2.5 bg-transparent placeholder:text-green-500">
+                    </div>
+                    <div>
+                        <label for="textarea">Comments</label>
+                        <textarea name="Comments" id="textarea" rows="3" class="border border-solid border-green-600 w-full px-5 py-2.5 bg-transparent placeholder:text-green-500"></textarea>
+                    </div>
+                </div>
+                <div class="w-1/2 pl-4">
+                    <div class="w-full h-full flex flex-col">
+                        <p class="leading-none pb-6">Upload File</p>
+                        <label
+                            class="flex justify-center w-full px-4 transition bg-transparent border-green-600 border-4 border-dashed appearance-none cursor-pointer flex-auto hover:border-gray-400 focus:outline-none">
+                            <span class="flex flex-col justify-center items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                                <div class="text-green-500 text-center">
+                                    <p class="text-xl leading-6 pb-4">Drop Your Files Here</p>
+                                    <p class="pb-4 text-sm leading-4">or</p>
+                                    <a href="#" class="btn btn-xs">Browse File</a>
+                                </div>
+                            </span>
+                            <input type="file" name="file_upload" class="hidden">
+                        </label>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-sm mt-5">SUBMIT</a>
+            </form>
+        </div>
+   </section>
+   
+   <section class="print:hidden">
+        <div class="mx-auto container py-16 lg:px-8 max-w-5xl">
+            <h2 class="text-center">Contact Us</h2>
+            <div class="container mx-auto px-4">
+                <div class="mx-0 my-8 lg:m-8 rounded overflow-hidden">
+                  <!-- accordion-tab  -->
+                  <div class="mt-1.5 group outline-none accordion-section border border-blue-400" tabindex="1">
+                    <div
+                      class="group"
+                    >
+                      <div class="text-green-500 px-8 py-4 text-xl lg:text-3xl leading-normal cursor-pointer relative">
+                        Lorem ipsum dolor sit amet
+                        <i class="group-focus:inline-block hidden accordian-icon absolute top-1/2 -translate-y-2/4 right-8"><img src="./assets/images/minus-icon.svg" alt="close accordian"></i>
+                        <i class="group-focus:hidden inline-block accordian-icon absolute top-1/2 -translate-y-2/4 right-8"><img src="./assets/images/plus-icon.svg" alt="open accordian"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="group-focus:max-h-screen max-h-0 px-8 overflow-hidden ease duration-500"
+                    >
+                      <p class="pt-2.5 pb-5 text-grey-200 text-justify group-focus:border-t border-green-700">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
+                        repellat amet doloribus consequuntur eos similique provident
+                        tempora voluptates iure quia fuga dicta voluptatibus culpa
+                        mollitia recusandae delectus id suscipit labore?
+                      </p>
+                    </div>
+                  </div>
+                  <!-- accordion-tab -->
+                  <!-- accordion-tab  -->
+                  <div class="mt-1.5 group outline-none accordion-section border border-blue-400" tabindex="2">
+                    <div
+                      class="group"
+                    >
+                      <div class="text-green-500 px-8 py-4 text-xl lg:text-3xl leading-normal cursor-pointer relative">
+                        Lorem ipsum dolor sit amet
+                        <i class="group-focus:inline-block hidden accordian-icon absolute top-1/2 -translate-y-2/4 right-8"><img src="./assets/images/minus-icon.svg" alt="close accordian"></i>
+                        <i class="group-focus:hidden inline-block accordian-icon absolute top-1/2 -translate-y-2/4 right-8"><img src="./assets/images/plus-icon.svg" alt="open accordian"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="group-focus:max-h-screen max-h-0 px-8 overflow-hidden ease duration-500"
+                    >
+                      <p class="pt-2.5 pb-5 text-grey-200 text-justify group-focus:border-t border-green-700">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
+                        repellat amet doloribus consequuntur eos similique provident
+                        tempora voluptates iure quia fuga dicta voluptatibus culpa
+                        mollitia recusandae delectus id suscipit labore?
+                      </p>
+                    </div>
+                  </div>
+                  <!-- accordion-tab -->
+                  <!-- accordion-tab  -->
+                  <div class="mt-1.5 group outline-none accordion-section border border-blue-400" tabindex="3">
+                    <div
+                      class="group"
+                    >
+                      <div class="text-green-500 px-8 py-4 text-xl lg:text-3xl leading-normal cursor-pointer relative">
+                        Lorem ipsum dolor sit amet
+                        <i class="group-focus:inline-block hidden accordian-icon absolute top-1/2 -translate-y-2/4 right-8"><img src="./assets/images/minus-icon.svg" alt="close accordian"></i>
+                        <i class="group-focus:hidden inline-block accordian-icon absolute top-1/2 -translate-y-2/4 right-8"><img src="./assets/images/plus-icon.svg" alt="open accordian"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="group-focus:max-h-screen max-h-0 px-8 overflow-hidden ease duration-500"
+                    >
+                      <p class="pt-2.5 pb-5 text-grey-200 text-justify group-focus:border-t border-green-700">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
+                        repellat amet doloribus consequuntur eos similique provident
+                        tempora voluptates iure quia fuga dicta voluptatibus culpa
+                        mollitia recusandae delectus id suscipit labore?
+                      </p>
+                    </div>
+                  </div>
+                  <!-- accordion-tab -->
+                </div>
+              </div>
+        </div>
+        <div class="container mx-auto">
+            <div class="flex px-8 py-5 flex-col-reverse text-center lg:text-left lg:flex-row lg:justify-between">
+                <p class="pt-4 text-green-500">&copy; 2022 Haus Gitschberg | Terms & Conditions | Privacy Policy</p>
+                <ul class="flex items-center justify-center lg:justify-start">
+                    <li class="pr-8">
+                        <a href="#" title="facebook">
+                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.39 7.20484V9.09151H14.1633L13.7167 12.0048H11.39V18.9115C10.8833 18.9908 10.3567 19.0315 9.82332 19.0315C9.28932 19.0315 8.76999 18.9908 8.26266 18.9115V12.0048H5.72266V9.09151H8.26266V6.87818C8.26266 4.35818 9.75599 2.96484 12.0433 2.96484C13.1367 2.96484 14.2767 3.15818 14.2767 3.15818V5.63151H13.0167C11.7767 5.63151 11.39 6.41151 11.39 7.20484Z" fill="#04282D"/>
+                                </svg>
+                        </a>
+                    </li>
+                    <li class="pr-8">
+                        <a href="#" title="twitter">
+                            <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.56 12.978C22.571 13.138 22.571 13.298 22.571 13.458C22.571 18.458 18.76 24.218 11.811 24.218C9.68099 24.218 7.691 23.598 6.021 22.518C6.311 22.558 6.611 22.579 6.921 22.579C8.691 22.579 10.321 21.969 11.611 20.959C9.961 20.929 8.561 19.829 8.081 18.329C8.311 18.379 8.55099 18.399 8.79099 18.399C9.14099 18.399 9.47099 18.348 9.79099 18.268C8.06099 17.918 6.761 16.389 6.761 14.559V14.509C7.271 14.799 7.85099 14.969 8.47099 14.989C7.45099 14.309 6.79099 13.149 6.79099 11.839C6.79099 11.149 6.97099 10.499 7.30099 9.93902C9.161 12.229 11.951 13.729 15.091 13.889C15.031 13.609 14.991 13.319 14.991 13.029C14.991 10.939 16.691 9.24902 18.77 9.24902C19.861 9.24902 20.84 9.70902 21.531 10.439C22.39 10.269 23.201 9.95902 23.93 9.51902C23.651 10.409 23.05 11.149 22.27 11.609C23.041 11.519 23.76 11.319 24.441 11.019C23.941 11.778 23.29 12.438 22.56 12.978Z" fill="#04282D"/>
+                                </svg>                                
+                        </a>
+                    </li>
+                    <li class="pr-8">
+                        <a href="#" title="instagram">
+                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_590_524)">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.96067 2.69696C11.2073 2.69696 12.454 2.69562 13.7007 2.69762C13.9873 2.69829 14.272 2.72496 14.5553 2.76962C14.8873 2.82229 15.212 2.90162 15.5293 3.01429C16.0513 3.19896 16.5293 3.46229 16.954 3.81896C17.3873 4.18362 17.7533 4.60629 18.036 5.09829C18.2887 5.53762 18.466 6.00629 18.5767 6.50029C18.626 6.72162 18.662 6.94429 18.6847 7.16962C18.7007 7.32629 18.7093 7.48429 18.7153 7.64162C18.7207 7.76696 18.72 7.89229 18.72 8.01762C18.7207 10.3676 18.7207 12.7176 18.72 15.0683C18.72 15.527 18.6773 15.981 18.5767 16.429C18.4787 16.873 18.328 17.2983 18.1153 17.701C17.9533 18.007 17.7593 18.2916 17.5313 18.5523C17.172 18.9636 16.7493 19.2956 16.2713 19.5583C15.8007 19.817 15.2993 19.9883 14.7733 20.0916C14.5147 20.1423 14.254 20.1756 13.99 20.191C13.8173 20.2016 13.6453 20.2063 13.4733 20.2063C11.0893 20.2063 8.70467 20.2076 6.32067 20.205C5.77467 20.2043 5.23667 20.133 4.71134 19.981C4.08334 19.7996 3.50934 19.5116 3.00001 19.0983C2.51267 18.703 2.11801 18.229 1.82201 17.675C1.55734 17.179 1.38667 16.6523 1.29467 16.099C1.25201 15.8436 1.22601 15.5863 1.21534 15.3283C1.21001 15.2016 1.20867 15.0743 1.20867 14.9476C1.20867 12.5943 1.20867 10.241 1.20801 7.88762C1.20801 7.73296 1.21001 7.57829 1.22001 7.42429C1.26067 6.76296 1.39667 6.12296 1.66334 5.51362C1.84934 5.08896 2.09134 4.69896 2.39467 4.34696C2.75067 3.93429 3.16867 3.59962 3.64601 3.33829C4.14334 3.06629 4.67401 2.89029 5.23067 2.79162C5.44334 2.75362 5.65867 2.72762 5.87401 2.71296C6.04001 2.70162 6.20534 2.69629 6.37134 2.69629C7.56867 2.69629 8.76467 2.69629 9.96067 2.69696C9.96067 2.69629 9.96067 2.69696 9.96067 2.69696ZM9.96201 18.5676C11.1553 18.5676 12.348 18.567 13.5407 18.5683C13.794 18.5683 14.0453 18.555 14.2947 18.5156C14.7107 18.4496 15.1087 18.3276 15.4807 18.1263C15.7993 17.9536 16.078 17.733 16.3187 17.4636C16.634 17.109 16.8527 16.6996 16.99 16.2463C17.108 15.855 17.1547 15.4543 17.1547 15.0463C17.1553 12.723 17.1547 10.3983 17.1547 8.07429C17.1547 7.93896 17.1553 7.80429 17.1493 7.66962C17.142 7.49162 17.1267 7.31562 17.098 7.14096C17.0073 6.58429 16.806 6.07296 16.4753 5.61296C16.3033 5.37362 16.1 5.16429 15.8613 4.98962C15.5233 4.74229 15.1493 4.57296 14.7453 4.46696C14.372 4.36896 13.99 4.33162 13.6053 4.33162C11.24 4.33096 8.87534 4.33162 6.51134 4.33162C6.40667 4.33162 6.30267 4.33229 6.19867 4.33629C6.03067 4.34296 5.86401 4.35562 5.69801 4.37829C5.38067 4.42096 5.07201 4.49829 4.77467 4.61696C4.43667 4.75096 4.12934 4.93496 3.86267 5.18296C3.62134 5.40696 3.42467 5.66696 3.26867 5.95829C3.00867 6.44496 2.88867 6.96962 2.85401 7.51629C2.84201 7.69696 2.84401 7.87762 2.84401 8.05829C2.84401 10.2896 2.84401 12.521 2.84401 14.7523C2.84401 14.923 2.84201 15.0943 2.84934 15.265C2.85867 15.4703 2.87734 15.6736 2.91201 15.8763C2.97934 16.269 3.10067 16.643 3.29467 16.993C3.43067 17.2376 3.59534 17.4616 3.79601 17.6563C4.00067 17.855 4.23334 18.0156 4.48601 18.1476C4.94734 18.3883 5.44201 18.5103 5.95801 18.5543C6.10534 18.5676 6.25334 18.5676 6.40201 18.5676C7.58934 18.5676 8.77601 18.5676 9.96201 18.5676Z" fill="#04282D"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.486 11.3737C14.486 11.8977 14.4107 12.3664 14.26 12.823C14.082 13.3644 13.81 13.8544 13.4474 14.293C13.082 14.7344 12.6494 15.0944 12.1487 15.373C11.6894 15.6284 11.1987 15.7977 10.68 15.881C10.4954 15.9104 10.3087 15.927 10.122 15.9337C9.42868 15.9584 8.76535 15.831 8.13068 15.553C7.73002 15.377 7.36335 15.1464 7.03068 14.8624C6.61535 14.5084 6.27468 14.093 6.00935 13.6157C5.78135 13.205 5.62202 12.7697 5.53068 12.3097C5.49335 12.123 5.46868 11.9344 5.45535 11.7444C5.44735 11.6357 5.44202 11.5264 5.44268 11.4177C5.44335 11.2424 5.45268 11.067 5.47402 10.8917C5.50335 10.6424 5.55268 10.397 5.62268 10.1557C5.79535 9.56503 6.07735 9.03237 6.46735 8.55637C6.74868 8.21303 7.07335 7.91637 7.44135 7.6677C7.85202 7.39037 8.29668 7.1857 8.77468 7.05437C9.01535 6.98837 9.26002 6.94303 9.50802 6.91637C9.72335 6.89303 9.94002 6.88637 10.1567 6.89703C10.74 6.92503 11.2987 7.05903 11.8294 7.30437C12.2314 7.4897 12.598 7.72837 12.9307 8.02037C13.4074 8.4377 13.782 8.93303 14.0547 9.50437C14.246 9.90703 14.3754 10.3284 14.4387 10.7697C14.4707 11.001 14.4867 11.2177 14.486 11.3737ZM9.96268 14.2997C11.514 14.3117 12.846 13.027 12.85 11.4224C12.8534 9.84503 11.56 8.5337 9.97068 8.53037C8.36268 8.5277 7.07935 9.85303 7.07868 11.4144C7.07735 12.9977 8.39068 14.309 9.96268 14.2997Z" fill="#04282D"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6846 6.79496C15.6853 7.36096 15.222 7.82629 14.6566 7.82429C14.0886 7.82229 13.6266 7.37429 13.626 6.79763C13.626 6.21296 14.088 5.76496 14.656 5.76563C15.2546 5.76763 15.6833 6.25096 15.6846 6.79496Z" fill="#04282D"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_590_524">
+                                <rect width="20" height="20" fill="white" transform="translate(0 0.998047)"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="pr-8">
+                        <a href="#" title="pintrest">
+                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_590_522)">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.21732 14.1041C9.20065 14.1241 9.20065 14.1434 9.19599 14.1601C9.05732 14.7041 8.92065 15.2488 8.78132 15.7921C8.68932 16.1534 8.59932 16.5148 8.49999 16.8741C8.41665 17.1754 8.30465 17.4674 8.17599 17.7521C7.90665 18.3501 7.57199 18.9121 7.20132 19.4521C7.04732 19.6761 6.88599 19.8948 6.71932 20.1094C6.70599 20.1261 6.69399 20.1434 6.67932 20.1588C6.63932 20.2014 6.58999 20.2181 6.53332 20.2021C6.47599 20.1861 6.44265 20.1474 6.43399 20.0881C6.40332 19.8821 6.37732 19.6761 6.35399 19.4688C6.33065 19.2568 6.31532 19.0441 6.29932 18.8321C6.29465 18.7688 6.29265 18.7054 6.28932 18.6421C6.27465 18.3608 6.27132 18.0788 6.27932 17.7974C6.29399 17.3108 6.33665 16.8261 6.44265 16.3494C6.48865 16.1414 6.53999 15.9348 6.58865 15.7268C6.75665 15.0161 6.92465 14.3048 7.09265 13.5941C7.22932 13.0161 7.36532 12.4388 7.50132 11.8601C7.58332 11.5128 7.66532 11.1661 7.74732 10.8201C7.75665 10.7801 7.75399 10.7461 7.73732 10.7074C7.61199 10.4141 7.53332 10.1074 7.48599 9.79209C7.44732 9.53676 7.42999 9.28076 7.44065 9.02343C7.45999 8.54143 7.56332 8.07876 7.78665 7.6481C7.93932 7.3521 8.14065 7.09476 8.40599 6.89076C8.65199 6.7021 8.92732 6.58543 9.23665 6.55343C9.45599 6.53143 9.67199 6.5521 9.88132 6.62343C10.164 6.72076 10.3793 6.90076 10.5313 7.15676C10.6533 7.36209 10.716 7.58609 10.7433 7.82143C10.7673 8.03409 10.7567 8.24676 10.7273 8.45876C10.676 8.83209 10.5787 9.19476 10.4747 9.55609C10.322 10.0854 10.1473 10.6094 9.99865 11.1408C9.94399 11.3354 9.88732 11.5294 9.85065 11.7274C9.77399 12.1448 9.83599 12.5388 10.0787 12.8934C10.2913 13.2054 10.5873 13.4061 10.948 13.5121C11.1707 13.5774 11.398 13.5934 11.6287 13.5754C12.0987 13.5368 12.508 13.3548 12.8747 13.0648C13.1633 12.8361 13.3987 12.5594 13.602 12.2541C13.826 11.9181 14.0007 11.5568 14.144 11.1801C14.3293 10.6914 14.4527 10.1861 14.5347 9.67076C14.5673 9.46543 14.592 9.25876 14.608 9.05076C14.622 8.8721 14.632 8.69343 14.6387 8.51476C14.6433 8.39409 14.6467 8.2741 14.644 8.15343C14.6333 7.62543 14.546 7.11143 14.342 6.62076C14.1867 6.2461 13.9733 5.90743 13.6993 5.6081C13.4327 5.31676 13.1233 5.0821 12.7767 4.89476C12.372 4.6761 11.94 4.53743 11.488 4.45543C11.298 4.42076 11.106 4.3981 10.9127 4.38343C10.698 4.36743 10.4833 4.36076 10.2687 4.36876C9.59532 4.39143 8.94465 4.5201 8.32465 4.78943C7.89199 4.97743 7.49532 5.22343 7.13665 5.53143C6.81865 5.80476 6.54332 6.11543 6.30999 6.46343C5.96999 6.97076 5.73732 7.5241 5.60732 8.12076C5.56465 8.31609 5.53532 8.51409 5.51532 8.71343C5.49332 8.95676 5.48932 9.19809 5.50199 9.43809C5.52465 9.87009 5.62132 10.2848 5.82332 10.6708C5.92332 10.8621 6.04599 11.0374 6.18599 11.2008C6.22932 11.2521 6.26865 11.3054 6.29865 11.3661C6.33599 11.4394 6.34665 11.5174 6.33399 11.5981C6.31532 11.7128 6.28132 11.8234 6.25265 11.9354C6.20332 12.1308 6.15399 12.3268 6.10399 12.5221C6.09465 12.5588 6.08399 12.5941 6.06865 12.6281C5.99665 12.7908 5.84732 12.8661 5.67332 12.8294C5.59465 12.8128 5.52332 12.7761 5.45132 12.7428C5.14132 12.5981 4.86665 12.4028 4.62599 12.1601C4.40865 11.9401 4.22865 11.6914 4.08065 11.4201C3.84332 10.9861 3.69599 10.5208 3.60932 10.0354C3.56999 9.81743 3.54399 9.59809 3.52999 9.37676C3.51799 9.18809 3.50932 9.00009 3.51599 8.81076C3.52799 8.43943 3.57465 8.0721 3.65932 7.70943C3.76065 7.27343 3.90932 6.8541 4.10199 6.4501C4.32999 5.97343 4.61332 5.5321 4.95065 5.1261C5.39732 4.58876 5.91865 4.1361 6.51065 3.76476C7.12065 3.3821 7.77599 3.10543 8.47065 2.91943C8.80132 2.83076 9.13599 2.7641 9.47532 2.7181C9.68799 2.68943 9.90132 2.66943 10.116 2.65476C10.4147 2.6341 10.714 2.6321 11.014 2.6401C11.282 2.64743 11.5493 2.67276 11.8153 2.71143C12.128 2.75676 12.4367 2.8221 12.7407 2.90876C13.0507 2.99743 13.3533 3.10743 13.6473 3.24076C13.962 3.38343 14.264 3.5501 14.5507 3.74276C14.8107 3.91676 15.0553 4.11076 15.286 4.32276C15.646 4.65476 15.96 5.0241 16.226 5.43476C16.6 6.01143 16.8627 6.63476 17.006 7.30743C17.0607 7.5641 17.096 7.82276 17.1127 8.08543C17.128 8.33143 17.1247 8.57676 17.1167 8.82209C17.1073 9.09809 17.0853 9.37409 17.0507 9.64876C17.0087 9.98143 16.9513 10.3114 16.8733 10.6374C16.7613 11.1108 16.6107 11.5708 16.414 12.0148C16.186 12.5288 15.9027 13.0108 15.5493 13.4488C15.21 13.8701 14.82 14.2374 14.3687 14.5368C13.838 14.8894 13.2593 15.1288 12.6327 15.2488C12.426 15.2888 12.2187 15.3141 12.0087 15.3281C11.848 15.3394 11.6867 15.3408 11.5253 15.3348C11.2793 15.3254 11.0373 15.2834 10.8 15.2154C10.466 15.1194 10.152 14.9794 9.86599 14.7814C9.62932 14.6181 9.42065 14.4268 9.26465 14.1828C9.24999 14.1574 9.23532 14.1328 9.21732 14.1041Z" fill="#04282D"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_590_522">
+                                <rect width="20" height="20" fill="white" transform="translate(0 0.998047)"/>
+                                </clipPath>
+                                </defs>
+                            </svg>   
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.2334 6.8582C18.0401 6.1182 17.4534 5.5382 16.7141 5.3382C15.3734 4.98486 10.0001 4.98486 10.0001 4.98486C10.0001 4.98486 4.62674 4.98486 3.28674 5.3382C2.54674 5.5382 1.96007 6.1182 1.76674 6.8582C1.40674 8.1982 1.40674 10.9982 1.40674 10.9982C1.40674 10.9982 1.40674 13.7982 1.76674 15.1382C1.96007 15.8782 2.54674 16.4582 3.28674 16.6582C4.62674 17.0182 10.0001 17.0182 10.0001 17.0182C10.0001 17.0182 15.3734 17.0182 16.7134 16.6582C17.4527 16.4582 18.0394 15.8782 18.2327 15.1382C18.5934 13.7982 18.5934 10.9982 18.5934 10.9982C18.5934 10.9982 18.5934 8.1982 18.2334 6.8582ZM8.28007 13.5782V8.4182L12.7467 10.9982L8.28007 13.5782Z" fill="#04282D"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+   </section>
+    <script>
+        var swiper = new Swiper('.mySwiper', {
+            slidesPerView: 1.5,
+            spaceBetween: 18,
+            autoHeight: true,
+            loop: true,
+            centeredSlides: true,
+            navigation: {
+                nextEl: ".swiper-section .swiper-button-next",
+                prevEl: ".swiper-section .swiper-button-prev",
+            },
+            breakpoints: {
+                1024: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 20,
+                    centeredSlides: false,
+                    loop: false
+                },
+            }
+        });
+        
+    </script>
+</body>
+</html>
