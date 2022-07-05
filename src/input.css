@@ -30,52 +30,57 @@
     body {
         font-family: 'PlayfairDisplay', serif;
         font-weight: 400;
-        font-size: 20px;
         line-height: 40px;
-        @apply text-grey-100 dark:bg-blue-800 dark:text-white;  
+        @apply text-grey-100 dark:bg-blue-800 dark:text-white text-sm;  
     }
     h1,h2,h3,h4,h5,h6,p,a {
         @apply dark:text-white;
     }
     h1 {
-        @apply text-7xl font-semibold text-green-500 ;
+        @apply text-3xl font-semibold text-green-500 ;
     }
     h2 {
-        @apply text-6xl leading-tight text-green-500;
+        @apply text-2xl leading-tight text-green-500;
     }
     h3 {
-        @apply relative lg:text-5xl pb-3 before:content-[''] before:h-1 before:absolute before:w-24 before:bottom-0 before:left-0 before:bg-blue-400 text-green-500;
+        @apply relative text-xl pb-3 before:content-[''] before:h-1 before:absolute before:w-24 before:bottom-0 before:left-0 before:bg-blue-400 text-green-500;
+    }
+    h3:before {
+        @apply max-w-full w-20;
     }
     h4 {
         @apply text-2xl leading-normal text-green-500;
     }
     h6 {
-        @apply text-green-500;
+        @apply text-green-500 text-base;
     }
     .btn {
-        @apply text-2xl border py-2.5 px-8 border-solid border-green-200 italic font-medium inline-block text-green-500;
+        @apply text-sm px-4 py-2 border border-solid border-green-200 italic font-medium inline-block text-green-500;
     }
+    /* .btn {
+        @apply border border-solid border-green-200 italic font-medium inline-block text-green-500;
+    } */
     .btn.btn-primary {
         @apply hover:bg-green-200 hover:text-white transition-all duration-500;
     }
     .btn.btn-sm {
-        @apply not-italic tracking-widest text-xl leading-7 py-2.5 px-5;
+        @apply text-sm p-2.5 not-italic tracking-widest;
     }
+    /* .btn.btn-sm {
+        @apply not-italic tracking-widest leading-7 text-xl py-2.5 px-5;
+    } */
     .btn.btn-xs {
-        @apply not-italic tracking-widest text-sm leading-4 py-1.5 px-7;
-    }
-    p {
-        @apply text-xl leading-loose;
+        @apply not-italic tracking-widest text-xs p-2;
     }
     body .swiper-button-next,
     body .swiper-button-prev {
-        height: 50px;
-        width: 50px;
+        height: 30px;
+        width: 30px;
     }
     body .swiper-button-next:after,
     body .swiper-button-prev:after {
-        height: 50px;
-        width: 50px;
+        height: 30px;
+        width: 30px;
         background-image: url('../src/assets/images/arrow.svg');
         background-size: cover;
         content: '';
@@ -84,16 +89,21 @@
         background-image: url('../src/assets/images/arrow-right.svg');
     }
     body .swiper-button-next {
-        @apply right-0;
+        @apply right-4;
     }
     body .swiper-button-prev {
-        @apply left-0;
+        @apply left-4;
     }
-    .icon.icon-angle {
+    /* .icon.icon-angle {
         background-image: url('../src/assets/images/menu-arrow.svg');
         background-repeat: no-repeat;
         background-position: center center;
-    }
+    } */
+    .icon.icon-angle {
+        background-image: url('../src/assets/images/menu-arrow-white.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+    } 
     html.dark .icon.icon-angle {
         background-image: url('../src/assets/images/menu-arrow-white.svg');
     }
@@ -113,22 +123,22 @@
         scrollbar-width: none;
     }
     .snap-x::-webkit-scrollbar { display: none; }
-    @media only screen and (max-width: 1024px) {
-        .icon.icon-angle {
+    /* @media only screen and (max-width: 1024px) { */
+        /* .icon.icon-angle {
             background-image: url('../src/assets/images/menu-arrow-white.svg');
             background-repeat: no-repeat;
             background-position: center center;
-        }       
-        h1 {
+        }        */
+        /* h1 {
             @apply text-5xl;
-        }
-        h2 {
+        } */
+        /* h2 {
             @apply text-4xl;
         }
         h3 {
             @apply text-3xl pb-8;
-        }
-        p {
+        } */
+        /* p {
             @apply text-base leading-loose;
         }
         .btn {
@@ -144,11 +154,11 @@
         body .swiper-button-prev:after {
             height: 40px;
             width: 40px;
-        }
-    }
-    @media only screen and (max-width: 640px) {
-        body {
-            @apply text-sm;  
+        } */
+    /* } */
+    /* @media only screen and (max-width: 640px) { */
+        /* body {
+            @apply text-sm;
         }
         h1 {
             @apply text-3xl;
@@ -164,26 +174,111 @@
         }
         h6 {
             @apply text-base;
-        }
-        body .swiper-button-next:after,
+        } */
+        /* body .swiper-button-next:after,
         body .swiper-button-prev:after {
             height: 30px;
             width: 30px;
-        }
-        body .swiper-button-next {
+        } */
+        /* body .swiper-button-next {
             @apply right-0;
         }
         body .swiper-button-prev {
             @apply left-0;
+        } */
+        /* .btn {
+            @apply text-sm px-4 py-2;
+        } */
+        /* .btn.btn-sm {
+            @apply text-sm p-2.5;
+        } */
+        /* .btn.btn-xs {
+            @apply text-xs p-2;
+        } */
+    /* } */
+    @screen sm {
+        h1 {
+            @apply text-5xl;
+        }
+        h2 {
+            @apply text-4xl;
+        }
+        h3 {
+            @apply text-3xl pb-8;
+        }
+        h3:before {
+            @apply max-w-none w-16;
+        }
+        h6 {
+            @apply text-xl;
+        }
+        p {
+            @apply text-base leading-loose;
         }
         .btn {
-            @apply text-sm px-4 py-2;
+            @apply text-base py-2 px-5;
+        }
+        body .swiper-button-next,
+        body .swiper-button-prev {
+            height: 40px;
+            width: 40px;
+        }
+        body .swiper-button-next:after,
+        body .swiper-button-prev:after {
+            height: 40px;
+            width: 40px;
+        }
+    }
+    @screen md {
+        .icon.icon-angle {
+            background-image: url('../src/assets/images/menu-arrow.svg');
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
+    @screen xl {
+        body {
+            @apply text-xl
+        }
+        h1 {
+            @apply text-7xl;
+        }
+        h2 {
+            @apply text-6xl;
+        }
+        h3 {
+            @apply text-5xl;
+        }  
+        h3:before {
+            @apply max-w-none w-24;
+        }
+        p {
+            @apply text-xl leading-loose;
+        }
+        body .swiper-button-prev {
+            @apply left-0;
+        }
+        body .swiper-button-next {
+            @apply right-0;
+        }
+        body .swiper-button-next,
+        body .swiper-button-prev {
+            height: 50px;
+            width: 50px;
+        }
+        body .swiper-button-next:after,
+        body .swiper-button-prev:after {
+            height: 50px;
+            width: 50px;
+        }
+        .btn {
+            @apply text-2xl py-2.5 px-8;
         }
         .btn.btn-sm {
-            @apply text-sm p-2.5;
+            @apply leading-7 text-xl py-2.5 px-5;
         }
         .btn.btn-xs {
-            @apply text-xs p-2;
+            @apply leading-4 text-sm py-1.5 px-7;
         }
     }
 }
